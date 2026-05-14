@@ -14,9 +14,9 @@ This repository serves strictly as the central **Documentation & Architecture Re
 
 | Layer | Responsibility | Corresponding Repo | Location in Diagram |
 | :--- | :--- | :--- | :--- |
-| **Process Logic** | Business BPMN, AI Prompts, Human-in-the-Loop workflows. | `process-ado` | **Top Box** (Agentic Decision Orchestration) |
+| **Process Logic** | Business BPMN, AI Prompts, Human-in-the-Loop workflows. | `agentic-orchestrator` | **Top Box** (Agentic Decision Orchestration) |
 | **Platform Ops** | GitOps pipelines (ArgoCD), Camunda/Zeebe deployment, Keycloak IAM. | `cluster-gitops` | **Middle Box** (Management Shell) |
-| **Infrastructure**| K3s/Helm charts, NVIDIA GPU bootstrapping, Resource profiling. | `resource-aware-infra` | **Bottom Footer** (Dashed Boundary) |
+| **Infrastructure**| K3s/Helm charts, NVIDIA GPU bootstrapping, Resource profiling. | `sovereign-infra` | **Bottom Footer** (Dashed Boundary) |
 
 *   **Status:** 🚧 Work in Progress
 *   **Goal:** Demonstrating secure, scalable, and auditable AI orchestration using an **"Adaptive Case Management 2.0"** approach with 100% data sovereignty.
@@ -87,7 +87,7 @@ Deployment is managed via **Helm profiles**, allowing seamless switching between
 
 #### Why No Spring AI?
 I evaluated Spring AI but deliberately excluded it to preserve architectural integrity:
-*   **Logic Decoupling:** Business logic belongs in the orchestration layer (`process-ado`), not hardcoded in Java binaries. This allows for rapid prompt-tuning and model-swapping without redeploying the entire service.
+*   **Logic Decoupling:** Business logic belongs in the orchestration layer (`agentic-orchestrator`), not hardcoded in Java binaries. This allows for rapid prompt-tuning and model-swapping without redeploying the entire service.
 *   **Native Auditability:** Using the native Camunda Connector ensures that prompts, reasoning paths, and tool calls are logged directly into Zeebe/Operate for compliance audits.
 *   **Process Transparency:** Non-technical stakeholders can visualize agent decision paths directly in BPMN diagrams without parsing application logs.
 
