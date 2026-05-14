@@ -1,7 +1,7 @@
 # Sovereign Agentic Orchestration Stack 🚀
 
 <div align="center">
-  <img src="docs/architecture/target_architecture.png" alt="Target Architecture Diagram" width="50%">
+  <img src="docs/architecture/target_architecture.png" alt="Target Architecture Diagram" width="100%">
   <p><i>Architecture Overview: Deterministic Orchestration meets Intelligent Execution.</i></p>
 </div>
 
@@ -42,6 +42,7 @@ To ensure "Human-in-the-Loop" or "Human-on-the-Loop" integrity, the architecture
 *   **Rapid Debugging:** Accelerates failure analysis by pinpointing exactly where an agent's reasoning diverged from expected business logic.
 
 > **Architecture Note:** By using **Camunda 8** as the orchestrator, we move from "unreliable automation" to "governed autonomy." We don't just execute AI; we manage it within a strict BPMN container.
+
 > **Disclaimer:** This repository is a reference architecture for educational and demonstrative purposes. It does not constitute a certified solution for specific regulatory frameworks. Users are responsible for conducting their own compliance audits (e.g., BaFin, DORA) before production use.
 
 ## 🏗️ Technical Stack
