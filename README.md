@@ -7,16 +7,16 @@
 
 ## ⚡ Executive Summary
 
-The **Sovereign-Agentic-Orchestration-Stack** is a reference architecture designed for highly regulated industries (FinTech, Defense, Health). It demonstrates how **Deterministic Orchestration** meets **Intelligent Execution** by bridging the gap between traditional BPMN and autonomous AI agents.
+The **Sovereign-Agentic-Orchestration-Stack (SAOS)** is a reference architecture designed for highly regulated industries (FinTech, Defense, Health). It demonstrates how **Deterministic Orchestration** meets **Intelligent Execution** by bridging the gap between traditional BPMN and autonomous AI agents.
 
 ### 🛑 Repository Role: Documentation & Architecture Hub
 This repository serves strictly as the central **Documentation & Architecture Reference**. The actual source code is distributed across three specialized repositories, structured exactly as depicted in the diagram above:
 
-| Layer | Responsibility | Corresponding Repo | Location in Diagram |
-| :--- | :--- | :--- | :--- |
-| **Process Logic** | Business BPMN, AI Prompts, Human-in-the-Loop workflows. | `agentic-orchestrator` | **Top Box** (Agentic Decision Orchestration) |
-| **Platform Ops** | GitOps pipelines (ArgoCD), Camunda/Zeebe deployment, Keycloak IAM. | `cluster-gitops` | **Middle Box** (Management Shell) |
-| **Infrastructure**| K3s/Helm charts, NVIDIA GPU bootstrapping, Resource profiling. | `sovereign-infra` | **Bottom Footer** (Dashed Boundary) |
+| Layer | Responsibility                                                          | Corresponding Repo     |
+| :--- |:------------------------------------------------------------------------|:-----------------------|
+| **Process Logic** | Business BPMN, AI Prompts, Human-in-the-Loop workflows.                 | `agentic-orchestrator` |
+| **Platform Ops** | GitOps pipelines (ArgoCD), Deployments (Camunda, Keycloak, Ollama). | `cluster-gitops`       |
+| **Infrastructure**| K3s/Helm charts, NVIDIA GPU bootstrapping, Resource profiling.          | [sovereign-infra](https://github.com/kj-hilger/sovereign-infra)    |
 
 *   **Status:** 🚧 Work in Progress
 *   **Goal:** Demonstrating secure, scalable, and auditable AI orchestration using an **"Adaptive Case Management 2.0"** approach with 100% data sovereignty.
