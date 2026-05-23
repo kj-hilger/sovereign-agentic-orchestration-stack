@@ -1,9 +1,61 @@
 # Sovereign Agentic Orchestration Stack 🚀
 
-<div align="center">
-  <img src="docs/architecture/target_architecture.png" alt="Target Architecture Diagram" width="100%">
-  <p><i>Architecture Overview: Deterministic Orchestration meets Intelligent Execution.</i></p>
-</div>
+## Architecture Overview: Deterministic Orchestration meets Intelligent Execution.
+
+```mermaid
+graph TB
+    subgraph agentic_orchestrator ["<b>agentic-orchestrator</b>"]
+        direction LR
+        subgraph bpmn_pool ["Agentic Orchestrator (BPMN Pool)"]
+            direction LR
+            start_event(( )) 
+            subgraph ad_hoc_sub ["~ Ad-Hoc Subprocess (AI Connector)"]
+                direction TB
+                service_task["⚙️ Service Task"]
+                human_task["👤 Human Task"]
+            end
+            end_event((( )))
+            start_event --> ad_hoc_sub
+            ad_hoc_sub --> end_event
+        end
+    end
+
+    subgraph cluster_gitops ["<b>cluster-gitops</b>"]
+        direction LR
+        argocd["🐙 ArgoCD"]
+        camunda["🔄 Camunda"]
+        keycloak["🛡️ Keycloak IAM"]
+        ollama["🧠 Ollama / LLM"]
+    end
+
+    subgraph sovereign_infra ["<b>sovereign-infra</b>"]
+        direction LR
+        k8s["☸️ Kubernetes"]
+        helm["⛵ Helm"]
+        postgres["🗄️ PostgreSQL"]
+    end
+
+    agentic_orchestrator ===> cluster_gitops
+    cluster_gitops ===> sovereign_infra
+
+    style agentic_orchestrator fill:#fff,stroke:#000,stroke-width:2px
+    style bpmn_pool fill:#fff,stroke:#000,stroke-width:2px
+    style ad_hoc_sub fill:#fff,stroke:#000,stroke-width:2px,stroke-dasharray: 5 5
+    style start_event fill:#fff,stroke:#000,stroke-width:2px
+    style service_task fill:#fff,stroke:#000,stroke-width:1px
+    style human_task fill:#fff,stroke:#000,stroke-width:1px
+    style end_event fill:#fff,stroke:#000,stroke-width:3px
+    style cluster_gitops fill:#fff,stroke:#000,stroke-width:2px
+    style argocd fill:#fff,stroke:#000,stroke-width:1px
+    style camunda fill:#fff,stroke:#000,stroke-width:1px
+    style keycloak fill:#fff,stroke:#000,stroke-width:1px
+    style ollama fill:#fff,stroke:#000,stroke-width:1px
+    style sovereign_infra fill:#fff,stroke:#000,stroke-width:2px,stroke-dasharray: 5 5
+    style k8s fill:#fff,stroke:#000,stroke-width:1px
+    style helm fill:#fff,stroke:#000,stroke-width:1px
+    style postgres fill:#fff,stroke:#000,stroke-width:1px
+    classDef default font-family:'Inter', 'Arial', sans-serif, font-weight:normal, color:#000;
+```
 
 ## ⚡ Executive Summary
 
@@ -37,7 +89,7 @@ To ensure "Human-in-the-Loop" or "Human-on-the-Loop" integrity, the architecture
 *   **Memory Context:** A snapshot of short-term and long-term memory state at the moment of decision.
 
 ### 🎯 Strategic Impact
-*   **Regulatory Compliance:** Provides the evidence required for **BaFin, DORA**, or Ethical AI frameworks (and defense contexts like RoE).
+*   **Regulatory Compliance:** Provides the evidence required for **BaFin, DORA**, or the [EU AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
 *   **Trust & Validation:** Enables operators to validate autonomous decisions *before* escalation.
 *   **Rapid Debugging:** Accelerates failure analysis by pinpointing exactly where an agent's reasoning diverged from expected business logic.
 
@@ -82,6 +134,7 @@ Deployment is managed via **Helm profiles**, allowing seamless switching between
 *	Usage saves time compared to traditional BPMN.
 
 #### Why Camunda over Open Source Forks (Operaton/CIB seven)?
+*   **Future Unclear** It is unclear if the forks will reach the critical mass for long-term-success.
 *   **Native Agentic Orchestration:** In Camunda 8, Agentic AI is integrated via dedicated Connectors and Ad-hoc Subprocesses. This provides out-of-the-box visibility in Camunda Operate and native analytics in Optimize. In many Open Source forks, agent logic often relies on external task workers, which can make it harder to maintain a "Single Source of Truth" for audit trails without significant custom development.
 *   **Alignment with Sovereign AI Trends:** This stack aligns with the strategic shift toward Agentic Orchestration (as highlighted at Camunda Con 2026). By using the current industry standard, this architecture ensures compatibility with upcoming governance and AI-safety features that are critical for regulated environments.
 *   **Commitment to Self-Managed Data Sovereignty:** While there is a strong industry trend toward SaaS, industries with high security requirements (FinTech, Defense) necessitate Self-Managed deployments. This stack is designed to leverage Camunda 8’s advanced features while maintaining 100% data sovereignty on-premises or in private clouds.
@@ -105,10 +158,9 @@ I treat Infrastructure as Code rather than separate utility:
 
 ## 🗺️ Roadmap & Phases
 
-- [ ] **Phase 1:** Kubernetes Infrastructure (Minikube, Helm, ArgoCD)
-- [ ] **Phase 2:** Camunda 8 Self-Managed Deployment & Service Provider Setup
-- [ ] **Phase 3:** Agentic AI Connector Setup
-- [ ] **Phase 4:** Process Application (BPMN, Forms, Java Job Workers)
+- [ ] **Phase 1:** [sovereign-infra](https://github.com/kj-hilger/sovereign-infra)
+- [ ] **Phase 2:** `cluster-gitops`
+- [ ] **Phase 3:** `agentic-orchestrator`
 
 ---
 
