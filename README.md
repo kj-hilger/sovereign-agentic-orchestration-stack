@@ -1,61 +1,9 @@
 # Sovereign Agentic Orchestration Stack 🚀
 
-## Architecture Overview: Deterministic Orchestration meets Intelligent Execution.
-
-```mermaid
-graph TB
-    subgraph agentic_orchestrator ["<b>agentic-orchestrator</b>"]
-        direction LR
-        subgraph bpmn_pool ["Agentic Orchestrator (BPMN Pool)"]
-            direction LR
-            start_event(( )) 
-            subgraph ad_hoc_sub ["~ Ad-Hoc Subprocess (AI Connector)"]
-                direction TB
-                service_task["⚙️ Service Task"]
-                human_task["👤 Human Task"]
-            end
-            end_event((( )))
-            start_event --> ad_hoc_sub
-            ad_hoc_sub --> end_event
-        end
-    end
-
-    subgraph cluster_gitops ["<b>cluster-gitops</b>"]
-        direction LR
-        argocd["🐙 ArgoCD"]
-        camunda["🔄 Camunda"]
-        keycloak["🛡️ Keycloak IAM"]
-        ollama["🧠 Ollama / LLM"]
-    end
-
-    subgraph sovereign_infra ["<b>sovereign-infra</b>"]
-        direction LR
-        k8s["☸️ Kubernetes"]
-        helm["⛵ Helm"]
-        postgres["🗄️ PostgreSQL"]
-    end
-
-    agentic_orchestrator ===> cluster_gitops
-    cluster_gitops ===> sovereign_infra
-
-    style agentic_orchestrator fill:#fff,stroke:#000,stroke-width:2px
-    style bpmn_pool fill:#fff,stroke:#000,stroke-width:2px
-    style ad_hoc_sub fill:#fff,stroke:#000,stroke-width:2px,stroke-dasharray: 5 5
-    style start_event fill:#fff,stroke:#000,stroke-width:2px
-    style service_task fill:#fff,stroke:#000,stroke-width:1px
-    style human_task fill:#fff,stroke:#000,stroke-width:1px
-    style end_event fill:#fff,stroke:#000,stroke-width:3px
-    style cluster_gitops fill:#fff,stroke:#000,stroke-width:2px
-    style argocd fill:#fff,stroke:#000,stroke-width:1px
-    style camunda fill:#fff,stroke:#000,stroke-width:1px
-    style keycloak fill:#fff,stroke:#000,stroke-width:1px
-    style ollama fill:#fff,stroke:#000,stroke-width:1px
-    style sovereign_infra fill:#fff,stroke:#000,stroke-width:2px,stroke-dasharray: 5 5
-    style k8s fill:#fff,stroke:#000,stroke-width:1px
-    style helm fill:#fff,stroke:#000,stroke-width:1px
-    style postgres fill:#fff,stroke:#000,stroke-width:1px
-    classDef default font-family:'Inter', 'Arial', sans-serif, font-weight:normal, color:#000;
-```
+<div align="center">
+  <img src="docs/architecture/target_architecture.png" alt="Target Architecture Diagram" width="100%">
+  <p><i>Architecture Overview: Deterministic Orchestration meets Intelligent Execution.</i></p>
+</div>
 
 ## ⚡ Executive Summary
 
