@@ -37,7 +37,7 @@ To ensure "Human-in-the-Loop" or "Human-on-the-Loop" integrity, the architecture
 *   **Memory Context:** A snapshot of short-term and long-term memory state at the moment of decision.
 
 ### 🎯 Strategic Impact
-*   **Regulatory Compliance:** Provides the evidence required for **BaFin, DORA**, or the [EU AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)
+*   **Regulatory Compliance:** Provides the evidence required for **[Digital Operational Resilience Act (DORA)](https://www.eiopa.europa.eu/digital-operational-resilience-act-dora_en)**, or the **[EU AI Act](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai)**
 *   **Trust & Validation:** Enables operators to validate autonomous decisions *before* escalation.
 *   **Rapid Debugging:** Accelerates failure analysis by pinpointing exactly where an agent's reasoning diverged from expected business logic.
 
