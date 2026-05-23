@@ -4,57 +4,47 @@
 
 ```mermaid
 graph TB
-    subgraph agentic_orchestrator ["<b>agentic-orchestrator</b>"]
+    %% Define Styles via Classes first
+    classDef process fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef infra fill:#f3e5f5,stroke:#4a148c,stroke-width:2px;
+    classDef ops fill:#fff9c4,stroke:#fbc02d,stroke-width:2px;
+    classDef event fill:#e8f5e9,stroke:#1b5e20,stroke-width:3px;
+
+    subgraph agentic_orchestrator ["<b>🔄 agentic-orchestrator</b><br/>Process Logic (BPMN)"]
         direction LR
-        subgraph bpmn_pool ["Agentic Orchestrator (BPMN Pool)"]
-            direction LR
-            start_event(( )) 
-            subgraph ad_hoc_sub ["~ Ad-Hoc Subprocess (AI Connector)"]
-                direction TB
-                service_task["⚙️ Service Task"]
-                human_task["👤 Human Task"]
-            end
-            end_event((( )))
-            start_event --> ad_hoc_sub
-            ad_hoc_sub --> end_event
+        start_event((Start)) 
+        subgraph ad_hoc_sub ["Ad-Hoc Subprocess<br/>(AI Connector)"]
+            service_task["⚙️ Service Task<br/>(LLM/API Call)"]
+            human_task["👤 Human Task<br/>(Audit/Approve)"]
         end
+        end_event((End))
+        
+        start_event --> ad_hoc_sub
+        ad_hoc_sub --> end_event
+        
     end
 
-    subgraph cluster_gitops ["<b>cluster-gitops</b>"]
-        direction LR
-        argocd["🐙 ArgoCD"]
-        camunda["🔄 Camunda"]
-        keycloak["🛡️ Keycloak IAM"]
-        ollama["🧠 Ollama / LLM"]
+    subgraph cluster_gitops ["<b>🐙 cluster-gitops</b><br/>Platform Ops & Deployment"]
+        argocd["ArgoCD"]
+        camunda["Camunda 8"]
+        keycloak["Keycloak IAM"]
+        ollama["Ollama / LLM"]
     end
 
-    subgraph sovereign_infra ["<b>sovereign-infra</b>"]
-        direction LR
-        k8s["☸️ Kubernetes"]
-        helm["⛵ Helm"]
-        postgres["🗄️ PostgreSQL"]
+    subgraph sovereign_infra ["<b>☸️ sovereign-infra</b><br/>Compute & Database"]
+        k8s["K3s / K8s"]
+        helm["Helm Charts"]
+        postgres["PostgreSQL"]
     end
 
-    agentic_orchestrator ===> cluster_gitops
-    cluster_gitops ===> sovereign_infra
+    agentic_orchestrator === cluster_gitops
+    cluster_gitops => sovereign_infra
 
-    style agentic_orchestrator fill:#fff,stroke:#000,stroke-width:2px
-    style bpmn_pool fill:#fff,stroke:#000,stroke-width:2px
-    style ad_hoc_sub fill:#fff,stroke:#000,stroke-width:2px,stroke-dasharray: 5 5
-    style start_event fill:#fff,stroke:#000,stroke-width:2px
-    style service_task fill:#fff,stroke:#000,stroke-width:1px
-    style human_task fill:#fff,stroke:#000,stroke-width:1px
-    style end_event fill:#fff,stroke:#000,stroke-width:3px
-    style cluster_gitops fill:#fff,stroke:#000,stroke-width:2px
-    style argocd fill:#fff,stroke:#000,stroke-width:1px
-    style camunda fill:#fff,stroke:#000,stroke-width:1px
-    style keycloak fill:#fff,stroke:#000,stroke-width:1px
-    style ollama fill:#fff,stroke:#000,stroke-width:1px
-    style sovereign_infra fill:#fff,stroke:#000,stroke-width:2px,stroke-dasharray: 5 5
-    style k8s fill:#fff,stroke:#000,stroke-width:1px
-    style helm fill:#fff,stroke:#000,stroke-width:1px
-    style postgres fill:#fff,stroke:#000,stroke-width:1px
-    classDef default font-family:'Inter', 'Arial', sans-serif, font-weight:normal, color:#000;
+    %% Apply Styles
+    class start_event,end_event event;
+    class service_task,human_task process;
+    class argocd, camunda, keycloak, ollama ops;
+    class k8s, helm, postgres infra;
 ```
 
 ## ⚡ Executive Summary
