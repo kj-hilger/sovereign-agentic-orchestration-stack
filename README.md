@@ -63,11 +63,11 @@ We prioritize **Single Source of Truth**, **Data Sovereignty**, and **Hardware E
 > **"One Stack, Any Scale"**  
 > This project follows a unified GitOps approach. Whether deploying to a high-power workstation or a power-efficient edge device, the architecture remains identical.
 
-| Environment | Specs (Tested) | Use Case |
-| :--- | :--- | :--- |
-| **High-Power Desktop** | 64 GB RAM / 16 GB VRAM (RTX) | Development, Heavy Load Testing, Large LLMs |
-| **Edge AI (Jetson)** | 16 GB Unified Memory (Orin Nano) | Industrial Edge, Power-Efficient continuous operations |
-| **Minimal / Laptop** | 16 GB RAM (CPU only) | Proof of Concept, Local Process Testing |
+| Pic                                                       | Environment            | Specs (Tested)                           | Use Case                                               |
+|:----------------------------------------------------------|:-----------------------|:-----------------------------------------|:-------------------------------------------------------|
+|                                                           | **High-Power Desktop** | 64 GB RAM / 16 GB VRAM (RTX)             | Development, Heavy Load Testing, Large LLMs            |
+| <img src="docs/sovereign-infra-jetson.jpg" width="300">   | **Edge AI (Jetson)**   | 16 GB Unified Memory (Orin Nano)         | Industrial Edge, Power-Efficient continuous operations |
+|                                                           | **Minimal / Laptop**   | 16 GB RAM (CPU only)                     | Proof of Concept, Local Process Testing                |
 
 ### ⚙️ Multi-Platform Strategy
 Deployment is managed via **Helm profiles**, allowing seamless switching between resource-constrained and high-performance hardware:
@@ -86,6 +86,10 @@ Deployment is managed via **Helm profiles**, allowing seamless switching between
 *   **Native Agentic Orchestration:** In Camunda 8, Agentic AI is integrated via dedicated Connectors and Ad-hoc Subprocesses. This provides out-of-the-box visibility in Camunda Operate and native analytics in Optimize. In many Open Source forks, agent logic often relies on external task workers, which can make it harder to maintain a "Single Source of Truth" for audit trails without significant custom development.
 *   **Alignment with Sovereign AI Trends:** This stack aligns with the strategic shift toward Agentic Orchestration (as highlighted at Camunda Con 2026). By using the current industry standard, this architecture ensures compatibility with upcoming governance and AI-safety features that are critical for regulated environments.
 *   **Commitment to Self-Managed Data Sovereignty:** While there is a strong industry trend toward SaaS, industries with high security requirements (FinTech, Defense) necessitate Self-Managed deployments. This stack is designed to leverage Camunda 8’s advanced features while maintaining 100% data sovereignty on-premises or in private clouds.
+*	**Seperation of Runtime and History Data:** Die Daten werden über asynchron arbeitende Exporter in eine sekundäre Datenbank exportiert. Die RUntime Daten sind in der RocksDB, welche Teil der Prozessmaschine Zeebe ist und im RAM läuft. Dadurch gibt es weniger Probleme im Betireb, insbes. keine Transaktions-Sperren mehr in der Datenbank. Abfragen in den Web UIs können die Ausführung der Prozesse nicht mehr ausbremsen. Es gibt weniger Bedarf für aggressive Cleanup Strategeien.
+*	**Reduced Costs:** In der Datenbank muss kein großer Sicherheitspuffer für Lastspitzen der Prozessanwendungen mehr eingeplant werden. Außerdem werden nicht mehr so viele Daten redundant gespeichert, da das Datenmodell der Web UIs vereinheitlicht wurde.
+*	**Distributed Runtime Data:** Der Zustand der Pods wird über das RAFT Protokoll synchronisiert. Wenn einzelne Pods ausfallen, funktioniert es trotzdem, man kann einfacher die Anzahl der Pods skalieren. Und weil die Pods zur Laufzeit nicht ehr auf eine zentrale Datenbank zugreifen, gibt es nach einer Skalierung weniger Risiko für Sperren.
+*   **Eventual Consistency:** ???
 
 #### Why No Spring AI?
 I evaluated Spring AI but deliberately excluded it to preserve architectural integrity:
@@ -106,9 +110,9 @@ I treat Infrastructure as Code rather than separate utility:
 
 ## 🗺️ Roadmap & Phases
 
-- [ ] **Phase 1:** [sovereign-infra](https://github.com/kj-hilger/sovereign-infra)
-- [ ] **Phase 2:** `cluster-gitops`
-- [ ] **Phase 3:** `agentic-orchestrator`
+- [33%] **Phase 1:** [sovereign-infra](https://github.com/kj-hilger/sovereign-infra)
+- [00%] **Phase 2:** `cluster-gitops`
+- [00%] **Phase 3:** `agentic-orchestrator`
 
 ---
 
