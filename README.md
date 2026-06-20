@@ -11,11 +11,11 @@ The **Sovereign-Agentic-Orchestration-Stack (SAOS)** is a reference architecture
 ### 🛑 Repository Role: Documentation & Architecture Hub
 This repository serves strictly as the central **Documentation & Architecture Reference**. The actual source code is distributed across three specialized repositories, structured exactly as depicted in the diagram above:
 
-| Layer | Responsibility                                                          | Corresponding Repo     |
-| :--- |:------------------------------------------------------------------------|:-----------------------|
-| **Process Logic** | Business BPMN, AI Prompts, Human-in-the-Loop workflows.                 | `agentic-orchestrator` |
-| **Platform Ops** | GitOps pipelines (ArgoCD), Deployments (Camunda, Keycloak, Ollama). | `cluster-gitops`       |
-| **Infrastructure**| K3s/Helm charts, NVIDIA GPU bootstrapping, Resource profiling.          | [sovereign-infra](https://github.com/kj-hilger/sovereign-infra)    |
+| Layer              | Responsibility                                                        | Corresponding Repo                                                   |
+|:-------------------|:----------------------------------------------------------------------|:---------------------------------------------------------------------|
+| **Process Logic**  | Business BPMN, AI Prompts, Human-in-the-Loop workflows.               | `agentic-orchestrator`                                               |
+| **Platform Ops**   | GitOps pipelines (ArgoCD), Deployments (Camunda, Keycloak, Ollama).   | [cluster-gitops](https://github.com/kj-hilger/cluster-gitops)        |
+| **Infrastructure** | K3s/Helm charts, NVIDIA GPU bootstrapping, Resource profiling.        | [sovereign-infra](https://github.com/kj-hilger/sovereign-infra)      |
 
 *   **Status:** 🚧 Work in Progress
 *   **Goal:** Demonstrating secure, scalable, and auditable AI orchestration using an **"Adaptive Case Management 2.0"** approach with 100% data sovereignty.
