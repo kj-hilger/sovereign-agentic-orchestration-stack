@@ -109,7 +109,7 @@ I treat Infrastructure as Code rather than separate utility:
 
 ## 🗺️ Roadmap & Phases
 
-- [ ] **Phase 1:** [sovereign-infra](https://github.com/kj-hilger/sovereign-infra)
+- [x] **Phase 1:** [sovereign-infra](https://github.com/kj-hilger/sovereign-infra)
 - [ ] **Phase 2:** [cluster-gitops](https://github.com/kj-hilger/cluster-gitops)
 - [ ] **Phase 3:** `agentic-orchestrator`
 
