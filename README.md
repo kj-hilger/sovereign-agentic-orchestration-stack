@@ -1,8 +1,7 @@
 # Sovereign Agentic Orchestration Stack 🚀
 
 <div align="center">
-  <img src="docs/architecture/target_architecture.png" alt="Target Architecture Diagram" width="100%">
-  <p><i>Architecture Overview: Deterministic Orchestration meets Intelligent Execution.</i></p>
+  <img src="docs/target_architecture.png" alt="Target Architecture Diagram" width="100%">
 </div>
 
 ## ⚡ Executive Summary
@@ -110,9 +109,9 @@ I treat Infrastructure as Code rather than separate utility:
 
 ## 🗺️ Roadmap & Phases
 
-- [33%] **Phase 1:** [sovereign-infra](https://github.com/kj-hilger/sovereign-infra)
-- [00%] **Phase 2:** `cluster-gitops`
-- [00%] **Phase 3:** `agentic-orchestrator`
+- [ ] **Phase 1:** [sovereign-infra](https://github.com/kj-hilger/sovereign-infra)
+- [ ] **Phase 2:** [cluster-gitops](https://github.com/kj-hilger/cluster-gitops)
+- [ ] **Phase 3:** `agentic-orchestrator`
 
 ---
 
